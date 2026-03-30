@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0A192F;
+  --navy-mid: #112240;
+  --navy-light: #1D3461;
+  --gold: #C9A227;
+  --gold-light: #E8C458;
+  --gold-pale: rgba(201, 162, 39, 0.10);
+  --cream: #F5F0E8;
+  --dim: rgba(245, 240, 232, 0.55);
+  --border: rgba(201, 162, 39, 0.20);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--navy);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Keyframes ─────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scrollLine {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+
+  51% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+@keyframes pulseGold {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 12px rgba(201, 162, 39, 0);
+  }
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes revealLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes revealRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ─── Animation classes ─────────────────────────────────────────── */
+.animate-fadeUp {
+  animation: fadeUp 0.7s ease forwards;
+  opacity: 0;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease forwards;
+  opacity: 0;
+}
+
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+.animate-scroll-line {
+  animation: scrollLine 2.5s ease-in-out infinite;
+}
+
+.animate-pulse-gold {
+  animation: pulseGold 2s infinite;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.delay-600 {
+  animation-delay: 0.6s;
+}
+
+.delay-700 {
+  animation-delay: 0.7s;
+}
+
+/* ─── Scroll reveal classes ─────────────────────────────────────── */
+.reveal,
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.reveal {
+  transform: translateY(36px);
+}
+
+.reveal-left {
+  transform: translateX(-40px);
+}
+
+.reveal-right {
+  transform: translateX(40px);
+}
+
+.reveal.visible,
+.reveal-left.visible,
+.reveal-right.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── Typography base ───────────────────────────────────────────── */
+h1,
+h2,
+h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+/* ─── Grid background for Hero ──────────────────────────────────── */
+.hero-grid-bg {
+  background-image:
+    linear-gradient(to bottom, rgba(10, 25, 47, 0) 0%, rgba(10, 25, 47, 0.8) 100%),
+    radial-gradient(ellipse at 70% 40%, rgba(201, 162, 39, 0.07) 0%, transparent 60%),
+    linear-gradient(rgba(201, 162, 39, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 162, 39, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+}
+
+/* ─── Left bar hover card animation ────────────────────────────── */
+.practice-card {
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.practice-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 0%;
+  background: var(--gold);
+  transition: height 0.4s ease;
+}
+
+.practice-card:hover::before {
+  height: 100%;
+}
+
+.practice-card:hover {
+  background: var(--navy-mid);
+  transform: translateY(-2px);
+}
+
+/* ─── Timeline ──────────────────────────────────────────────────── */
+.timeline-line {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+
+/* ─── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hero-deco-ring {
+    display: none;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .practice-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .education-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 901px) {
+  .mobile-menu-btn {
+    display: none !important;
+  }
+}
+
+/* ─── shadcn overrides for dark theme ──────────────────────────── */
+.dark-accordion [data-radix-accordion-trigger] {
+  color: var(--cream);
+}
