@@ -615,22 +615,31 @@ export default function DeguTadeleLaw() {
               position: 'absolute', inset: 20, borderRadius: '50%',
               border: `1px dashed rgba(201,162,39,0.35)`,
             }} />
-            {/* Center content */}
+            {/* Center content with Image */}
             <div style={{
               background: C.navyLight, borderRadius: '50%',
-              width: 200, height: 200,
-              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-              border: `1px solid ${C.border}`,
+              width: 220, height: 220,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              border: `2px solid ${C.gold}`,
+              overflow: 'hidden', zIndex: 2,
+              boxShadow: `0 0 40px ${C.goldPale}`,
             }}>
-              <Scale size={32} color={C.gold} />
-              <div style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: '1.9rem', fontWeight: 700, color: C.cream, marginTop: 8,
-              }}>3+</div>
-              <div style={{
-                fontFamily: "'DM Sans', sans-serif",
-                fontSize: '0.7rem', color: C.dim, letterSpacing: '0.1em', textTransform: 'uppercase',
-              }}>{t.stats.exp}</div>
+              <img 
+                src="/assets/images/degu_tadele.jpg" 
+                alt="Degu Tadele" 
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+              />
+            </div>
+            {/* Float badge */}
+            <div style={{
+              position: 'absolute', top: 0, right: 0,
+              background: C.navyMid, border: `1px solid ${C.gold}`,
+              borderRadius: '50%', width: 70, height: 70,
+              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+              zIndex: 3, boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
+            }}>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.2rem', fontWeight: 700, color: C.gold }}>3+</div>
+              <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.5rem', color: C.dim, textTransform: 'uppercase' }}>{t.stats.exp}</div>
             </div>
           </div>
         </div>
@@ -698,17 +707,21 @@ export default function DeguTadeleLaw() {
               width: '100%', aspectRatio: '3/4',
               background: `linear-gradient(135deg, ${C.navy} 0%, ${C.navyLight} 100%)`,
               border: `1px solid ${C.border}`,
-              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-              color: C.dim, gap: 12, position: 'relative', overflow: 'hidden',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              position: 'relative', overflow: 'hidden',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
             }}>
+              <img 
+                src="/assets/images/degu_tadele.jpg" 
+                alt="Degu Tadele" 
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+              />
               {/* Decorative frame inset */}
               <div style={{
                 position: 'absolute', inset: 12,
                 border: `1px solid ${C.border}`,
                 borderRadius: 2, pointerEvents: 'none',
               }} />
-              <Scale size={48} color={C.gold} />
-              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', color: C.dim }}>Degu Tadele</span>
             </div>
             {/* Gold badge */}
             <div style={{
@@ -717,6 +730,7 @@ export default function DeguTadeleLaw() {
               fontFamily: "'DM Sans', sans-serif", fontWeight: 500,
               fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase',
               padding: '10px 16px', borderRadius: 2,
+              boxShadow: '0 4px 15px rgba(201,162,39,0.3)',
             }}>{t.about.badge}</div>
           </div>
 
